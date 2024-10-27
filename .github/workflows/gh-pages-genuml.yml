@@ -1,8 +1,8 @@
-name: Generation of PlantUML for GitHub Pages
+name: Generation of PlantUML
 
 on:
     push:
-        branches: ['gh-pages']
+        branches: ['main']
 
 jobs:
     generate-plantuml:
