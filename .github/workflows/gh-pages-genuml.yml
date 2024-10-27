@@ -1,0 +1,27 @@
+name: Generation of PlantUML for GitHub Pages
+
+on:
+    push:
+        branches: ['gh-pages']
+
+jobs:
+    generate-plantuml:
+        strategy:
+            matrix:
+                umlpath:
+                    - 'docs/arch.puml'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+              with:
+                  persist-credentials: false
+                  fetch-depth: 0
+
+            - name: plantuml
+              id: plantuml
+              uses: grassedge/generate-plantuml-action@v1.5
+              with:
+                  path: ${{ matrix.umlpath }}
+                  message: 'doc: 渲染 UML 图'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
