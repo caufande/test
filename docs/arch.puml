@@ -1,0 +1,20 @@
+@startuml
+title 信  息  流  动  图
+package "数  据  库" {
+	database "act-db 仓  库" as dbrepo
+	actor "数  据  库  维  护  者" as dbadmin
+}
+package "网  站" {
+	component "数  据  库  编  程  接  口" as wbjs
+	component "当  日  活  动  显  示  功  能" as wbtody
+}
+package "信  息  源" {
+	actor "活  动  组  织  者" as fmorg
+	collections "活  动  发  布  信  息" as fminfo
+}
+dbadmin --> dbrepo
+wbjs <-- dbrepo
+fmorg --> dbrepo
+wbtody <-- wbjs
+fminfo --> dbadmin
+@enduml
