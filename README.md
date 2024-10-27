@@ -12,7 +12,7 @@
 
 本项目主要内容是一个有关项目和比赛的数据库，围绕数据库有各种小功能。
 
-```plantuml:docs/arch
+```plantuml:arch
 @startuml "信息流动图"
 title 信  息  流  动  图
 package "cnblogs 博  客" {
