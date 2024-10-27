@@ -32,9 +32,10 @@ jobs:
               run: |
                   sudo apt install graphviz
                   wget https://github.com/plantuml/plantuml/releases/download/v${{ env.PLANT_UML_VERSION }}/plantuml-${{ env.PLANT_UML_VERSION }}.jar -O plantuml.jar
-                  IFS=',' read -r -a array <<< "$UML_GRAPH_LIST"
+                  IFS=',' read -r -a array <<< "${{ env.UML_GRAPH_LIST }}"
                   for item in "${array[@]}"; do
-                    java -jar plantuml.jar $item
+                    echo $item
+                    java -jar plantuml.jar -tsvg $item
                   done
 
             - name: Save changes
